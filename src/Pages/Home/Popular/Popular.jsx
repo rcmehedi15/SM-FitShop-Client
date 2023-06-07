@@ -5,6 +5,7 @@ import img3 from '../../../assets/popularclass/img3.png'
 import img4 from '../../../assets/popularclass/img4.png'
 import img5 from '../../../assets/popularclass/img5.png'
 import img6 from '../../../assets/popularclass/img6.png'
+import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 const Popular = () => {
     const popularClasses = [
         {
@@ -44,7 +45,8 @@ const Popular = () => {
 
     return (
         <div className="container px-3 mx-auto py-8">
-            <h2 className="text-2xl font-bold mb-4">Popular Classes</h2>
+           
+                <SectionTitle   heading={"Popular Classes"} subHeading={" Join Our Most Popular Classes for a Healthy Lifestyle "}> </SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {popularClasses.slice(0, 6).map((classItem) => (
                     <div key={classItem.title} className="rounded overflow-hidden shadow-lg mx-1">
