@@ -7,9 +7,7 @@ import backgroundPhoto from '../../../assets/FitnessImg/backgroundPhoto.png';
 import fitness1 from '../../../assets/FitnessImg/fitness1.png';
 import fitness2 from '../../../assets/FitnessImg/fitness2.png';
 import fitness3 from '../../../assets/FitnessImg/fitness3.png';
-import fitness4 from '../../../assets/FitnessImg/fitness4.png';
-import fitness5 from '../../../assets/FitnessImg/fitness5.png';
-import fitness6 from '../../../assets/FitnessImg/fitness6.png';
+
 
 
 
