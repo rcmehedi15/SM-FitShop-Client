@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
-import Banner from "../Banner/Banner";
+import Slider from "../Slider/Slider";
+
 
 const HomePages = () => {
     return (
@@ -9,7 +10,7 @@ const HomePages = () => {
                     Home | SM Fit SHOP
                 </title>
             </Helmet>
-            <Banner></Banner>
+            <Slider></Slider>
             
         </>
     );
