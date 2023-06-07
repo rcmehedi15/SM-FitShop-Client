@@ -6,7 +6,7 @@ import img4 from '../../../assets/popularclass/img4.png'
 import img5 from '../../../assets/popularclass/img5.png'
 import img6 from '../../../assets/popularclass/img6.png'
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
-const Popular = () => {
+const PopularClasses = () => {
     const popularClasses = [
         {
             title: 'Cardio Kickboxing',
@@ -44,7 +44,7 @@ const Popular = () => {
     popularClasses.sort((a, b) => b.students - a.students);
 
     return (
-        <div className="container px-3 mx-auto py-8">
+        <div className="container px-3 mx-auto ">
            
                 <SectionTitle   heading={"Popular Classes"} subHeading={" Join Our Most Popular Classes for a Healthy Lifestyle "}> </SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -62,4 +62,4 @@ const Popular = () => {
     );
 };
 
-export default Popular;
+export default PopularClasses;

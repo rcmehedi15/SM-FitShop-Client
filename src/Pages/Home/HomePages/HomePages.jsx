@@ -1,6 +1,9 @@
 import { Helmet } from "react-helmet";
 import Slider from "../Slider/Slider";
-import Popular from "../Popular/Popular";
+import PopularClasses from "../PopularClasses/PopularClasses";
+import PopularInstructors from "../PopularInstructors/PopularInstructors";
+
+
 
 
 const HomePages = () => {
@@ -12,7 +15,8 @@ const HomePages = () => {
                 </title>
             </Helmet>
             <Slider></Slider>
-            <Popular></Popular>
+            <PopularClasses></PopularClasses>
+            <PopularInstructors></PopularInstructors>
             
         </>
     );
