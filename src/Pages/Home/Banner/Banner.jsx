@@ -12,7 +12,7 @@ const Banner = () => {
                                 MAKE YOURSELF <span className='text-[#fc541a]'>STRONGER</span> THAN YOUR <span className='text-[#fc541a]'>EXCUSES</span>
                             </h1>
                             <p className="text-lg md:text-xl lg:text-2xl text-gray-400 mb-8">
-                                Discover amazing products and services tailored just for you.
+                                Regular physical activity can improve your muscle instance and boost your endurance. Exercise delivers oxygen and nutrients to your tissues and helps your card cardiovascular system work more efficiently
                             </p>
                             <button className="bg-[#fc541a] hover:bg-success text-white py-3 px-6 rounded-full text-lg font-bold">
                                 GET STARTED
