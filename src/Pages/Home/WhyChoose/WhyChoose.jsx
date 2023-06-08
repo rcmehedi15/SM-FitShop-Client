@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSpring, animated, useTrail } from 'react-spring';
-import backgroundImage from '../../../assets/FitnessImg/backgroundPhoto.png';
-import photoImage from '../../../assets/FitnessImg/fitness4.png';
+import backgroundImage from '../../../assets/FitnessImg/backgroundPhoto2.png';
+import photoImage from '../../../assets/FitnessImg/background.gif';
 import Typical from 'react-typical';
+import { FaCheck } from 'react-icons/fa';
 
 const WhyChoose = () => {
   const leftSideAnimation = useSpring({
@@ -24,31 +25,53 @@ const WhyChoose = () => {
   });
 
   return (
-    <section
-      className="flex flex-col lg:flex-row items-center justify-center "
-      style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover' }}
-    >
+    <section className="h-[600px]  flex flex-col lg:flex-row items-center justify-center bg-[#193038]">
       <animated.div className="w-full lg:w-1/2 px-6 lg:px-12">
-        <animated.div style={leftSideAnimation}> 
+        <animated.div style={leftSideAnimation}>
           <Typical
             steps={['Why Choose Us?', 2000, 'Why', 1000]}
             loop={Infinity}
             wrapper="h2"
             className="text-3xl lg:text-5xl text-[#fc541a] font-bold mb-6"
           />
-          <p className="text-lg font-sans lg:text-xl text-white mb-8">
-          Choose our fitness center for a rewarding and transformative fitness experience. Our state-of-the-art facility offers top-notch equipment, knowledgeable trainers, and a welcoming environment that will inspire you to reach your health and wellness goals. With a wide range of group classes, personalized training programs, and modern amenities, we provide everything you need to enhance your fitness journey. Whether you're a beginner or a seasoned athlete, our dedicated staff is committed to helping you achieve results and maintain a healthy lifestyle. Visit our website today and discover the difference our fitness center can make in your life
-
-          </p>
-          <button className="bg-[#fc541a] hover:bg-[#193038] text-white font-bold py-2 px-4 rounded">Learn More</button>
+          <div className="flex">
+            <div className="max-w-7xl sm:px-4 lg:px-2 text-white">
+              <div className="">
+                <div className="flex items-start mb-4">
+                  <FaCheck className="text-green-500 mt-1 mr-2" />
+                  <p>State-of-the-Art Facilities: Our fitness center offers modern equipment and facilities to enhance your workout experience.
+                  </p>
+                </div>
+                <div className="flex items-start mb-4">
+                  <FaCheck className="text-green-500 mt-1 mr-2" />
+                  <p>Expert Trainers: Our certified trainers provide professional guidance and personalized workout plans.</p>
+                </div>
+                <div className="flex items-start mb-4">
+                  <FaCheck className="text-green-500 mt-1 mr-2" />
+                  <p>Motivational Environment: Join our supportive community of like-minded individuals who inspire and motivate each other.</p>
+                </div>
+                <div className="flex items-start mb-4">
+                  <FaCheck className="text-green-500 mt-1 mr-2" />
+                  <p>Health Benefits: Regular exercise at our fitness center can lead to improved cardiovascular fitness, increased strength, and reduced stress levels.</p>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <button className="bg-[#fc541a] hover:bg-[#193038] text-white font-bold my-4 py-2 px-4 rounded">
+            Learn More
+          </button>
         </animated.div>
       </animated.div>
-      <div className="w-96 lg:w-1/2 px-6 lg:px-12">
-        {rightSideTrailAnimation.map((props, index) => (
-          <animated.div key={index} style={props}>
-            <img src={photoImage} alt="Fitness" />
-          </animated.div>
-        ))}
+      <div className="w-full lg:w-1/2 px-6 lg:px-12">
+        <div className="hidden lg:block">
+          {rightSideTrailAnimation.map((props, index) => (
+            <animated.div key={index} style={props}>
+              <img src={photoImage} alt="Fitness" />
+            </animated.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
