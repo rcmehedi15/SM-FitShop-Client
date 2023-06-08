@@ -21,14 +21,14 @@ const HomePages = () => {
                     Home | SM Fit SHOP
                 </title>
             </Helmet>
-            <Slider></Slider>
+            {/* <Slider></Slider>
             <PopularClasses></PopularClasses>
             <PopularInstructors></PopularInstructors>
             <AboutUs></AboutUs>
             <OpenFacilites></OpenFacilites>
             <Pricing></Pricing>
             <WhyChoose></WhyChoose>
-            <Testimonial></Testimonial>
+            <Testimonial></Testimonial> */}
             
 
 
