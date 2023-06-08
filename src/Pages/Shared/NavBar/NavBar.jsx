@@ -12,12 +12,12 @@ const NavBar = () => {
                 console.log(error);
             })
     }
-   
+
 
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/">Instructors</Link></li>
-        <li><Link to="/">Classes</Link></li>
+        <li><Link to="/instructors">Instructors</Link></li>
+        <li><Link to="/classes">Classes</Link></li>
 
     </>
 
@@ -66,14 +66,10 @@ const NavBar = () => {
                                             </li>
                                             <li>
                                                 <Link to="/addToy">
-                                                    Add Toy
+                                                    Dashboard
                                                 </Link>
                                             </li>
-                                            <li>
-                                                <Link to="/myToy">
-                                                    My Toy
-                                                </Link>
-                                            </li>
+                                            
 
                                             <li><Link onClick={handleLogOut} >Logout</Link></li>
                                         </ul>
