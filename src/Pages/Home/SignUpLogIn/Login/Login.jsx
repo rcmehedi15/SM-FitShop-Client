@@ -1,8 +1,50 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import animationLogin from '../../../../assets/LoginSignUp/login.gif'
+import { useContext } from 'react'
+import { AuthContext } from '../../../../Providers/AuthProvider'
+import toast from 'react-hot-toast'
+
 
 const Login = () => {
+    const { loading, setLoading, signIn, signInWithGoogle } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+
+    // Handle submit
+    const handleSubmit = event => {
+        event.preventDefault()
+        const email = event.target.email.value
+        const password = event.target.password.value
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user)
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                setLoading(false)
+                console.log(err.message)
+                toast.error(err.message)
+            })
+    }
+
+    // Handle google signin
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user)
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                setLoading(false)
+                console.log(err.message)
+                toast.error(err.message)
+            })
+    }
+
+
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
@@ -77,7 +119,7 @@ const Login = () => {
                                     </p>
                                     <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
                                 </div>
-                                <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+                                <div onClick={handleGoogleSignIn} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
                                     <FcGoogle size={32} />
 
                                     <p>Continue with Google</p>
@@ -90,7 +132,7 @@ const Login = () => {
                                     >
                                         Sign up
                                     </Link>
-                                    
+
                                 </p>
                             </div>
                         </div>

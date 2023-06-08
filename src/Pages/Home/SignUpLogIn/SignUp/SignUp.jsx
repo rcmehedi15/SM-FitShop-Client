@@ -33,7 +33,7 @@ const SignUp = () => {
                                                 type='text'
                                                 name='name'
                                                 id='name'
-                                                placeholder='Enter Your Name Here'
+                                                placeholder='Enter Your Name'
                                                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
                                                 data-temp-mail-org='0'
                                             />

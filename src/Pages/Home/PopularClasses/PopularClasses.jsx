@@ -44,7 +44,7 @@ const PopularClasses = () => {
     popularClasses.sort((a, b) => b.students - a.students);
 
     return (
-        <div className="container px-3 mx-auto ">
+        <div className="mx-9">
            
                 <SectionTitle   heading={"Popular Classes"} subHeading={" Join Our Most Popular Classes for a Healthy Lifestyle "}> </SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

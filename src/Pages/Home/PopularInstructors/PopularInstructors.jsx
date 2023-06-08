@@ -44,13 +44,13 @@ const PopularInstructors = () => {
     popularInstructors.sort((a, b) => b.students - a.students);
 
     return (
-        <div className="container px-3 mx-auto ">
-           
-                <SectionTitle   heading={"Popular Instructors"} subHeading={"  Get Inspired and Motivated by Our Top-rated Instructors"}> </SectionTitle>
+        <div className="mx-9">
+
+            <SectionTitle heading={"Popular Instructors"} subHeading={"  Get Inspired and Motivated by Our Top-rated Instructors"}> </SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {popularInstructors.slice(0, 6).map((classItem) => (
                     <div key={classItem.title} className="rounded overflow-hidden shadow-lg mx-1">
-                        <img src={classItem.image} alt={classItem.title} className="w-full h-72" />
+                        <img src={classItem.image} alt={classItem.title} className="w-full h-96" />
                         <div className="px-6 text-center py-4">
                             <div className="font-bold text-xl mb-2">{classItem.title}</div>
                             <p className="text-gray-700">Students: {classItem.students}</p>
