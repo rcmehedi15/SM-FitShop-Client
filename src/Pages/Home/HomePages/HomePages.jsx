@@ -6,6 +6,8 @@ import AboutUs from "../AboutUs/AboutUs";
 import Pricing from "../Pricing/Pricing";
 import OpenFacilites from "../OpenFacilites/OpenFacilites";
 import WhyChoose from "../WhyChoose/WhyChoose";
+import Testimonial from "../Testimonial/Testimonial";
+
 
 
 
@@ -26,6 +28,8 @@ const HomePages = () => {
             <OpenFacilites></OpenFacilites>
             <Pricing></Pricing>
             <WhyChoose></WhyChoose>
+            <Testimonial></Testimonial>
+            
 
 
 
