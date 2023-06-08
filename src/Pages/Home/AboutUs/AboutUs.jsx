@@ -26,7 +26,7 @@ const AboutUs = () => {
                     <p className="mb-4">
                         In addition, we offer wellness workshops, seminars, and personal training sessions to support your overall well-being. Your safety is our top priority, and we maintain a clean and sanitized environment. Join us today and take the next step toward improving your fitness and overall health.
                     </p>
-                    <a href="/learn-more" className="bg-[#fc541a] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <a href="/learn-more" className="bg-[#fc541a] hover:bg-[#193038] text-white font-bold py-2 px-4 rounded">
                         Learn More
                     </a>
                 </div>
