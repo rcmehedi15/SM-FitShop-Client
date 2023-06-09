@@ -65,14 +65,21 @@ const NavBar = () => {
                                                 </Link>
                                             </li>
 
-                                           
                                             <li>
-                                                <Link to="/dashboard">
-                                                     Dashboard
+                                                <Link to="/dashboard/admin" className="justify-between">
+                                                    Admin Dashboard   
                                                 </Link>
                                             </li>
-
-
+                                            <li>
+                                                <Link to="/dashboard/student" className="justify-between">
+                                                    Student Dashboard   
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/dashboard/addclass" className="justify-between">
+                                                instructor Dashboard   
+                                                </Link>
+                                            </li>
                                             <li><Link onClick={handleLogOut} >Logout</Link></li>
                                         </ul>
                                     </> : <Link to='/login' className='btn btn-outline border-[#fc541a] btn-sm btn-out hover:border-[#fc541a] rounded-md hover:bg-[#fc541a] hover:text-white '>Login</Link>

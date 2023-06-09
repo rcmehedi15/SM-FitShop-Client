@@ -1,11 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
-import Footer from "../Pages/Shared/Footer/Footer";
 import HomePages from "../Pages/Home/HomePages/HomePages";
 import Login from "../Pages/Home/SignUpLogIn/Login/Login";
 import SignUp from "../Pages/Home/SignUpLogIn/SignUp/SignUp";
-import Dashboard from "../Providers/Dashboard/Dashboard";
+import AllDashboardNavigation from "../Pages/Dashboard/AllDashboardNavigation/AllDashboardNavigation";
 import PrivateRoute from "./PrivateRoute";
+import AdminDashboard from "../Pages/Dashboard/AdminDashboard/AdminDashboard";
+import StudentDashboard from "../Pages/Dashboard/StudentDashboard/StudentDashboard";
+import InstructorDashboard from "../Pages/Dashboard/InstructorDashboard/InstructorDashboard";
+import ManageClasses from "../Pages/Dashboard/AdminDashboard/ManageClasses/ManageClasses";
+import ManageUsers from "../Pages/Dashboard/AdminDashboard/ManageUsers/ManageUsers";
+import AddClass from "../Pages/Dashboard/InstructorDashboard/AddClass/AddClass";
+
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +34,52 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    element: <PrivateRoute><AllDashboardNavigation /></PrivateRoute>,
+    children: [
+      //------------------------ admin routes ----------------------
+      {
+        path: 'admin',
+        element: <AdminDashboard />
+      },
+      {
+        path: 'manageclasses',
+        element: <ManageClasses />
+      },
+      {
+        path: 'manageusers',
+        element: <ManageUsers /> 
+      },
+      // ---------------------- student routes --------------------
+      {
+        path: 'student',
+        element: <StudentDashboard />
+      },
+      // {
+      //   path: 'myselectedclass',
+      //   element: <AdminDashboard></AdminDashboard>
+      // },
+      // {
+      //   path: 'payment',
+      //   element: <AdminDashboard></AdminDashboard>
+      // },
+      // {
+      //   path: 'myenrolledclass',
+      //   element: <AdminDashboard></AdminDashboard>
+      // },
+      // ---------------------- instructor routes --------------------
+      {
+        path: 'instructor',
+        element: <InstructorDashboard />
+      },
+      {
+        path: 'addclass',
+        element: <AddClass />
+      },
+      // {
+      //   path: 'myclasses',
+      //   element: <AdminDashboard></AdminDashboard>
+      // }
+    ]
   }
-
+  
 ]);
