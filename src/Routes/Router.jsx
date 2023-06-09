@@ -13,6 +13,7 @@ import ManageUsers from "../Pages/Dashboard/AdminDashboard/ManageUsers/ManageUse
 import AddClass from "../Pages/Dashboard/InstructorDashboard/AddClass/AddClass";
 import MyClasses from "../Pages/Dashboard/InstructorDashboard/MyClasses/MyClasses";
 import MySelectedClasses from "../Pages/Dashboard/StudentDashboard/MySelectedClasses/MySelectedClasses";
+import MyEnrolledClasses from "../Pages/Dashboard/StudentDashboard/MyEnrolledClasses/MyEnrolledClasses";
 
 
 export const router = createBrowserRouter([
@@ -60,12 +61,12 @@ export const router = createBrowserRouter([
         path: 'myselectedclass',
         element: <MySelectedClasses></MySelectedClasses>
       },
+      {
+        path: 'myenrolledclass',
+        element: <MyEnrolledClasses />
+      },
       // {
       //   path: 'payment',
-      //   element: <AdminDashboard></AdminDashboard>
-      // },
-      // {
-      //   path: 'myenrolledclass',
       //   element: <AdminDashboard></AdminDashboard>
       // },
       // ---------------------- instructor routes --------------------
