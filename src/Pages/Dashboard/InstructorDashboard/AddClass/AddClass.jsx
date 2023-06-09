@@ -22,18 +22,26 @@ const AddClass = () => {
         // Send the formData to the server or perform any processing here
         // For example, you can make an API request using fetch or axios
 
-        fetch('/upload', {
+        fetch(url, {
             method: 'POST',
             body: formData,
         })
             .then((response) => response.json())
             .then((result) => {
-                // Handle the response from the server
-                console.log(result);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: ' Class Added success',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                        reset();
+
+                
             })
             .catch((error) => {
                 // Handle any errors
-                console.error(error);
+                toast.success('not added class')
             })
         
     };
@@ -116,7 +124,7 @@ const AddClass = () => {
 
                     {/* form Photo URL row */}
 
-                    <input required type="submit" value="Add Class" className="btn bg-[#fc541a] text-white border-none" />
+                    <input required type="submit" value="Added" className="btn bg-[#fc541a] text-white border-none" />
                 </form>
             </div>
         </div>
