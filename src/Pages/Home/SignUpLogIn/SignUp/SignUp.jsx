@@ -6,10 +6,11 @@ import { TbFidgetSpinner } from 'react-icons/tb'
 import { updateProfile } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import { FcGoogle } from 'react-icons/fc'
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { loading, setLoading, createUser, updateUserProfile, } = useContext(AuthContext)
+    const { loading, setLoading, createUser, updateUserProfile, signInWithGoogle} = useContext(AuthContext)
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const navigate = useNavigate();
@@ -51,7 +52,20 @@ const SignUp = () => {
                     .catch(error => alert("Error", error))
             })
     };
-
+    // Handle google signin
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user)
+                alert('Successfullya Login')
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                setLoading(false)
+                console.log(err.message)
+                alert(err.message)
+            })
+    }
 
     return (
         <div className="hero mt-12">
@@ -207,6 +221,18 @@ const SignUp = () => {
                     <label className="p-10">
                         <p className='text-center'>Already have an account ? <Link to="/login" className="text-blue-400 link link-hover">Login Now!</Link></p>
                     </label>
+                    <div className='flex items-center pt-4 space-x-1'>
+                        <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
+                        <p className='px-3 text-sm dark:text-gray-400'>
+                            Login with social accounts
+                        </p>
+                        <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
+                    </div>
+                    <div onClick={handleGoogleSignIn} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+                        <FcGoogle size={32} />
+
+                        <p>Continue with Google</p>
+                    </div>
                 </div>
             </div>
         </div>

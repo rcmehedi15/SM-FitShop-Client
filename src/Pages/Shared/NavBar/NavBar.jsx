@@ -64,12 +64,14 @@ const NavBar = () => {
                                                     <span className="badge">New</span>
                                                 </Link>
                                             </li>
+
+                                           
                                             <li>
-                                                <Link to="/addToy">
-                                                    Dashboard
+                                                <Link to="/dashboard">
+                                                     Dashboard
                                                 </Link>
                                             </li>
-                                            
+
 
                                             <li><Link onClick={handleLogOut} >Logout</Link></li>
                                         </ul>

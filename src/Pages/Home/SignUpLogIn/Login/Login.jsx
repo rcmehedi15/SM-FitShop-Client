@@ -3,7 +3,6 @@ import { FcGoogle } from 'react-icons/fc'
 import animationLogin from '../../../../assets/LoginSignUp/login.gif'
 import { useContext, useState } from 'react'
 import { AuthContext } from '../../../../Providers/AuthProvider'
-import toast from 'react-hot-toast'
 import { TbFidgetSpinner } from 'react-icons/tb'
 
 
@@ -23,7 +22,7 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user)
-                alert('Successfully a Login')
+                alert('Successfully  Login')
                 navigate(from, { replace: true })
             })
             .catch(err => {
@@ -38,7 +37,7 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user)
-                alert('Successfully a Login')
+                alert('Successfully Login')
                 navigate(from, { replace: true })
             })
             .catch(err => {
