@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { useForm } from 'react-hook-form';
+import { addClasses } from '../../../api/Classes';
 
 
 
@@ -27,7 +28,7 @@ const AddClass = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-
+                // Single Add Class Data 
                 const addClassData = {
                     className,
                     price: parseFloat(price),
@@ -39,9 +40,9 @@ const AddClass = () => {
                     availableSeats,
                     classImage: data.data.display_url,
                 }
-
-                console.log(addClassData);
-
+                // post classes data send to server
+              console.log(addClassData);
+              addClasses(addClassData);
             })
             .catch((error) => {
                 // Handle any errors
