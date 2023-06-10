@@ -4,7 +4,6 @@ import { AiOutlineBars } from 'react-icons/ai'
 import Logo from '../Logo/Logo'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { FiSettings } from 'react-icons/fi'
-import { FaBookMedical, FaBookReader } from 'react-icons/fa'
 import { AuthContext } from '../../../Providers/AuthProvider'
 import InstructorDashboard from '../InstructorDashboard/InstructorDashboard'
 import StudentDashboard from '../StudentDashboard/StudentDashboard'
@@ -29,7 +28,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Small Screen Navbar */}
-      <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
+      <div className='bg-gray-100 text-white flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             <Logo />
@@ -45,7 +44,7 @@ const Sidebar = () => {
       </div>
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#004f83] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && '-translate-x-full'
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
@@ -65,12 +64,12 @@ const Sidebar = () => {
                 />
               </Link>
               <Link to='/dashboard'>
-                <h4 className='mx-2 mt-2 font-medium text-gray-800  hover:underline'>
+                <h4 className='mx-2 mt-2 font-medium text-white  hover:underline'>
                   {user?.displayName}
                 </h4>
               </Link>
               <Link to='/dashboard'>
-                <p className='mx-2 mt-1 text-sm font-medium text-gray-600  hover:underline'>
+                <p className='mx-2 mt-1 text-sm font-medium text-white opacity-80  hover:underline'>
                   {user?.email}
                 </p>
               </Link>
@@ -84,7 +83,7 @@ const Sidebar = () => {
                 <>
                   <label
                     htmlFor='Toggle3'
-                    className='inline-flex w-full justify-center items-center px-2 rounded-md cursor-pointer text-gray-800'
+                    className='inline-flex w-full justify-center items-center px-2 rounded-md cursor-pointer text-white'
                   >
                     <input
                       onChange={toggleHandler}
@@ -92,18 +91,18 @@ const Sidebar = () => {
                       type='checkbox'
                       className='hidden peer'
                     />
-                    <span className='px-4 py-1 rounded-l-md bg-rose-400 peer-checked:bg-gray-300'>
+                    <span className='px-4 py-1 rounded-l-md bg-[#5ab02c] peer-checked:bg-[#a8abab]'>
                       Student
                     </span>
-                    <span className='px-4 py-1 rounded-r-md bg-gray-300 peer-checked:bg-rose-400'>
+                    <span className='px-4 py-1 rounded-r-md bg-[#a8abab] peer-checked:bg-[#5ab02c]'>
                       Instructor
                     </span>
                   </label>
                   {/* Menu Links */}
-                  {toggle ? <StudentDashboard /> : <InstructorDashboard />}
+                  {toggle ? <InstructorDashboard /> : <StudentDashboard />}
                 </>
               ) : (
-                <InstructorDashboard />
+                <StudentDashboard />
               )}
             </nav>
           </div>
@@ -115,7 +114,7 @@ const Sidebar = () => {
             to='/dashboard/profile'
             className={({ isActive }) =>
               `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
               }`
             }
           >
@@ -125,7 +124,7 @@ const Sidebar = () => {
           </NavLink>
           <button
             onClick={handleLogOut}
-            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+            className='flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
           >
             <AiOutlineLogout className='w-5 h-5' />
 
