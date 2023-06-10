@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../Providers/AuthProvider';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../../../../Providers/AuthProvider';
 
 
 const AddClass = () => {
