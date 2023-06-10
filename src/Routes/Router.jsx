@@ -6,6 +6,7 @@ import Login from "../Pages/SignUpLogIn/Login/Login";
 import SignUp from "../Pages/SignUpLogIn/SignUp/SignUp";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AddClass from "../Pages/AllDashboard/InstructorDashboard/AddClass";
+import MyClasses from "../Pages/AllDashboard/InstructorDashboard/MyClasses";
 
 
 export const router = createBrowserRouter([
@@ -35,7 +36,11 @@ export const router = createBrowserRouter([
       // instructor
       {
         path: 'add-class',
-        element: <AddClass></AddClass>
+        element: <AddClass />
+      },
+      {
+        path: 'my-classes',
+        element: <MyClasses />
       }
       //------------------------ admin routes ----------------------
      

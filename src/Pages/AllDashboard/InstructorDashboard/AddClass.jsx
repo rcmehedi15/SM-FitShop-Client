@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { addClasses } from '../../../api/Classes';
+import { toast } from 'react-hot-toast';
 
 
 
@@ -40,13 +41,20 @@ const AddClass = () => {
                     availableSeats,
                     classImage: data.data.display_url,
                 }
+                Swal.fire({
+                    icon: 'success',
+                    title: ' Class Added success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 // post classes data send to server
-              console.log(addClassData);
               addClasses(addClassData);
+              reset();
             })
+
             .catch((error) => {
                 // Handle any errors
-                alert('not added class')
+                toast.error('no added class')
             })
 
     };
@@ -55,7 +63,7 @@ const AddClass = () => {
     return (
         <div className="w-full ">
             <div className="md:p-8 m-4 ">
-                <h2 className="text-3xl font-extrabold">Add a Class</h2>
+                <h2 className="text-3xl font-extrabold text-[#004F83]">Add a Class</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
 
                     <div className="md:flex mb-4">
@@ -130,7 +138,7 @@ const AddClass = () => {
 
                     {/* form Photo URL row */}
 
-                    <input required type="submit" value="Added" className="btn bg-[#fc541a] text-white border-none" />
+                    <input required type="submit" value="Added" className="btn bg-[#004F83] text-white border-none" />
                 </form>
             </div>
         </div>

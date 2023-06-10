@@ -4,7 +4,7 @@ import Logo from '../Logo/Logo'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { FiSettings } from 'react-icons/fi'
 import { AiOutlineBars } from 'react-icons/ai'
-import { FaBookMedical } from 'react-icons/fa'
+import { FaBookMedical,FaBookReader } from 'react-icons/fa'
 import { AuthContext } from '../../../Providers/AuthProvider'
 const Sidebar = () => {
     const navigate = useNavigate()
@@ -105,6 +105,17 @@ const Sidebar = () => {
                                     <FaBookMedical className='w-5 h-5' />
 
                                     <span className='mx-4 font-medium'>Add Class</span>
+                                </NavLink>
+                                <NavLink
+                                    to='/dashboard/my-classes'
+                                    className={({ isActive }) =>
+                                        `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
+                                        }`
+                                    }
+                                >
+                                    <FaBookReader className='w-5 h-5' />
+
+                                    <span className='mx-4 font-medium'>My Classes</span>
                                 </NavLink>
                             </>
                         </nav>

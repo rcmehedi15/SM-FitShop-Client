@@ -1,15 +1,33 @@
 import React, { useContext } from 'react';
 import Logo from '../../../assets/Logo.png'
 import { Link } from 'react-router-dom';
+import InstructorRequestModal from '../../AllDashboard/Modal/InstructorRequestModal';
+import { useState } from 'react';
+import { instructorRole } from '../../../api/Auth';
 import { AuthContext } from '../../../Providers/AuthProvider';
-import './Navbar.css'
+import { toast } from 'react-hot-toast';
+
+
 const NavBar = () => {
     const { user, logOut, loading } = useContext(AuthContext);
+    const [modal, setModal] = useState(false)
+
+    const modalHandler = email => {
+        instructorRole(email)
+        .then(data => console.log(data))
+        toast.success("Now Your Are Instructor")
+        closeModal();
+    }
+    const closeModal = () => {
+        setModal(false)
+    }
+
+    // Logout
     const handleLogOut = () => {
         logOut()
             .then(() => { })
             .catch(error => {
-                console.log(error);
+                toast.error("Logout Error")
             })
     }
 
@@ -43,6 +61,17 @@ const NavBar = () => {
                 </div>
 
                 <div className='navbar navbar-end mr-7'>
+                    <div className='hidden md:block'>
+
+                        <button
+                            className='disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition'
+                            onClick={() => setModal(true)}
+                            
+                        >
+                            Became a Instructor
+                        </button>
+
+                    </div>
                     <div className="dropdown dropdown-end ">
                         {
                             !loading ? <div>
@@ -50,11 +79,13 @@ const NavBar = () => {
                                     user ? <>
 
                                         <div id='parent-user-profile' className='flex items-center gap-x-3'>
+
                                             <label id='user-pic' tabIndex={0} className="relative btn btn-ghost btn-circle avatar flex-row-reverse">
+
                                                 <div className="w-12 rounded-full">
                                                     <img src={user.photoURL ? user.photoURL : 'https://freesvg.org/img/abstract-user-flat-4.png'} />
                                                 </div>
-                                                <p id='user-name' className='absolute right-14 top-5 opacity-0 text-lg btn bg-white border-0 shadow-md btn-sm font-medium text-error overflow-hidden'>{user.displayName ? user.displayName : user?.email}</p>
+
                                             </label>
                                         </div>
                                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -66,20 +97,11 @@ const NavBar = () => {
                                             </li>
 
                                             <li>
-                                                <Link to="/dashboard/admin" className="justify-between">
-                                                    Admin Dashboard   
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/dashboard/myselectedclass" className="justify-between">
-                                                    Student Dashboard   
-                                                </Link>
-                                            </li>
-                                            <li>
                                                 <Link to="/dashboard" className="justify-between">
-                                                instructor Dashboard   
+                                                    Dashboard
                                                 </Link>
                                             </li>
+
                                             <li><Link onClick={handleLogOut} >Logout</Link></li>
                                         </ul>
                                     </> : <Link to='/login' className='btn btn-outline border-[#fc541a] btn-sm btn-out hover:border-[#fc541a] rounded-md hover:bg-[#fc541a] hover:text-white '>Login</Link>
@@ -89,7 +111,13 @@ const NavBar = () => {
                         }
                     </div>
                 </div>
-
+                <InstructorRequestModal 
+                email={user?.email} 
+                modalHandler={modalHandler}
+                isOpen={modal}
+                closeModal={closeModal} 
+                
+                />
             </div>
         </>
     );
