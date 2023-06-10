@@ -33,9 +33,9 @@ const AddClass = () => {
                 const addClassData = {
                     className,
                     price: parseFloat(price),
-                    Instructor: {
+                    instructor: {
                         instructorName: user?.displayName,
-                        instructorEmail: user?.email,
+                        email: user?.email,
                         instructorPhoto: user?.photoURL
                     },
                     availableSeats,
@@ -105,7 +105,7 @@ const AddClass = () => {
                                 <span className="label-text">Instructor Email</span>
                             </label>
                             <label >
-                                <input type="email" {...register("instructorEmail")} value={user?.email} className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#fc541a]  text-gray-900' />
+                                <input type="email" {...register("email")} value={user?.email} className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#fc541a]  text-gray-900' />
                             </label>
                         </div>
                     </div>

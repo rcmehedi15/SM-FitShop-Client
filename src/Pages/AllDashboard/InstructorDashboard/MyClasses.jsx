@@ -1,20 +1,16 @@
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../../Providers/AuthProvider'
+import { getClasses } from '../../../api/Classes'
+import MyClassesSingleDataRow from './MyClassesSingleDataRow'
 const MyClasses = () => {
 
-    const { user, loading } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
+    const [classes, setClasses] = useState([])
+    const fetchClasses = () => getClasses(user?.email).then(data => setClasses(data))
 
-    //   const { refetch, data: rooms = [] } = useQuer({
-    //     queryKey: ['rooms', user?.email],
-    //     enabled: !loading,
-    //     queryFn: async () => {
-    //       const res = await axiosSecure(
-    //         `${import.meta.env.VITE_API_URL}/rooms/${user?.email}`
-    //       )
-    //       console.log('res from axios', res.data)
-    //       return res.data
-    //     },
-    //   })
+    useEffect(() => {
+        fetchClasses()
+    }, [user])
 
 
     return (
@@ -67,26 +63,26 @@ const MyClasses = () => {
                                             scope='col'
                                             className='px-5 py-3 bg-[#004F83]    text-white text-left text-sm uppercase font-normal'
                                         >
-                                           Feedback
+                                            Feedback
                                         </th>
                                         <th
                                             scope='col'
                                             className='px-5 py-3 bg-[#004F83]    text-white text-left text-sm uppercase font-normal'
                                         >
-                                           Action
+                                            Action
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* {rooms &&
-                      rooms.map(room => (
-                        <RoomDataRow
-                          key={room?._id}
-                          room={room}
-                          refetch={refetch}
-                          // fetchRooms={fetchRooms}
-                        />
-                      ))} */}
+                                    {classes &&
+                                        classes.map(singleClasses => (
+                                            <MyClassesSingleDataRow
+                                                key={singleClasses?._id}
+                                                singleClasses={singleClasses}
+                                                
+                                            fetchClasses={fetchClasses}
+                                            />
+                                        ))}
                                 </tbody>
                             </table>
                         </div>

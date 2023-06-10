@@ -4,6 +4,7 @@ import { AiOutlineBars } from 'react-icons/ai'
 import Logo from '../Logo/Logo'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { FiSettings } from 'react-icons/fi'
+import { FaHome } from 'react-icons/fa'
 import { AuthContext } from '../../../Providers/AuthProvider'
 import InstructorDashboard from '../InstructorDashboard/InstructorDashboard'
 import StudentDashboard from '../StudentDashboard/StudentDashboard'
@@ -110,6 +111,19 @@ const Sidebar = () => {
 
         <div>
           <hr />
+          
+          <NavLink
+            to='/'
+            className={({ isActive }) =>
+              `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
+              }`
+            }
+          >
+            <FaHome className='w-5 h-5' />
+
+            <span className='mx-4 font-medium'>Home</span>
+          </NavLink>
           <NavLink
             to='/dashboard/profile'
             className={({ isActive }) =>
