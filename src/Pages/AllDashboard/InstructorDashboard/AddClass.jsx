@@ -5,46 +5,51 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import { useForm } from 'react-hook-form';
 
 
+
 const AddClass = () => {
     <Helmet>Add A Class</Helmet>
-    const { user } = useContext(AuthContext);
 
+    const { user } = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = (result) => {
+        
+        const { className, price,availableSeats } = result;
+       
         const formData = new FormData();
-        formData.append('image', data.image[0]);
+        formData.append('image', result.image[0]);
 
-
-        const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY
-            }`
-        // Send the formData to the server or perform any processing here
-        // For example, you can make an API request using fetch or axios
+        const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY}`
 
         fetch(url, {
             method: 'POST',
             body: formData,
         })
             .then((response) => response.json())
-            .then((result) => {
+            .then((data) => {
 
-                Swal.fire({
-                    icon: 'success',
-                    title: ' Class Added success',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-                        reset();
+                const addClassData = {
+                    className,
+                    price: parseFloat(price),
+                    Instructor: {
+                        instructorName: user?.displayName,
+                        instructorEmail: user?.email,
+                        instructorPhoto: user?.photoURL
+                    },
+                    availableSeats,
+                    classImage: data.data.display_url,
+                }
 
-                
+                console.log(addClassData);
+
             })
             .catch((error) => {
                 // Handle any errors
-                toast.success('not added class')
+                alert('not added class')
             })
-        
+
     };
+
 
     return (
         <div className="w-full ">
@@ -69,7 +74,7 @@ const AddClass = () => {
                             </label>
                             <label >
 
-                                <input type="text"  {...register("displayName")} value={user?.displayName} className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#fc541a]  text-gray-900' />
+                                <input type="text"  {...register("instructorName")} value={user?.displayName} className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#fc541a]  text-gray-900' />
 
 
                             </label>
@@ -91,7 +96,7 @@ const AddClass = () => {
                                 <span className="label-text">Instructor Email</span>
                             </label>
                             <label >
-                                <input type="email" {...register("email")} value={user?.email} className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#fc541a]  text-gray-900' />
+                                <input type="email" {...register("instructorEmail")} value={user?.email} className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#fc541a]  text-gray-900' />
                             </label>
                         </div>
                     </div>
@@ -115,7 +120,7 @@ const AddClass = () => {
                                 required
                                 type='file'
                                 id='image'
-                                
+
                                 accept='image/*'
                                 {...register("image")}
                             />
