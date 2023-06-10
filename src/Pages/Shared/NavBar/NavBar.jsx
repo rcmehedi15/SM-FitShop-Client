@@ -9,13 +9,14 @@ import { toast } from 'react-hot-toast';
 
 
 const NavBar = () => {
-    const { user, logOut, loading } = useContext(AuthContext);
+    const { user, logOut, loading, role, setRole } = useContext(AuthContext);
     const [modal, setModal] = useState(false)
-
+    console.log(role);
     const modalHandler = email => {
         instructorRole(email)
-        .then(data => console.log(data))
+            .then(data => console.log(data))
         toast.success("Now Your Are Instructor")
+        setRole('instructor')
         closeModal();
     }
     const closeModal = () => {
@@ -62,14 +63,14 @@ const NavBar = () => {
 
                 <div className='navbar navbar-end mr-7'>
                     <div className='hidden md:block'>
-
-                        <button
-                            className='disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition'
-                            onClick={() => setModal(true)}
-                            
-                        >
-                            Became a Instructor
-                        </button>
+                        {!role && user && (
+                            <button
+                                className='disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full transition'
+                                onClick={() => setModal(true)}
+                            >
+                                Become an instructor
+                            </button>
+                        )}
 
                     </div>
                     <div className="dropdown dropdown-end ">
@@ -102,7 +103,10 @@ const NavBar = () => {
                                                 </Link>
                                             </li>
 
-                                            <li><Link onClick={handleLogOut} >Logout</Link></li>
+                                            <li><Link onClick={() => {
+                                                setRole(null)
+                                                logOut()
+                                            }}>Logout</Link></li>
                                         </ul>
                                     </> : <Link to='/login' className='btn btn-outline border-[#fc541a] btn-sm btn-out hover:border-[#fc541a] rounded-md hover:bg-[#fc541a] hover:text-white '>Login</Link>
 
@@ -111,12 +115,12 @@ const NavBar = () => {
                         }
                     </div>
                 </div>
-                <InstructorRequestModal 
-                email={user?.email} 
-                modalHandler={modalHandler}
-                isOpen={modal}
-                closeModal={closeModal} 
-                
+                <InstructorRequestModal
+                    email={user?.email}
+                    modalHandler={modalHandler}
+                    isOpen={modal}
+                    closeModal={closeModal}
+
                 />
             </div>
         </>

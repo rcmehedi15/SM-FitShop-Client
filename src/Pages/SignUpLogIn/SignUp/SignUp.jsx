@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc'
 import { saveUser } from '../../../api/Auth';
+import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -60,7 +61,7 @@ const SignUp = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user)
-                alert('Successfullya Login')
+                toast.success('Successfully Login')
                 // save user db
                 saveUser(result.user)
                 navigate(from, { replace: true })
