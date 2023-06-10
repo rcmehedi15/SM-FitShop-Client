@@ -1,9 +1,11 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
-import animationLogin from '../../../../assets/LoginSignUp/login.gif'
+import animationLogin from '../../../assets/LoginSignUp/login.gif'
 import { useContext, useState } from 'react'
-import { AuthContext } from '../../../../Providers/AuthProvider'
 import { TbFidgetSpinner } from 'react-icons/tb'
+import { AuthContext } from '../../../Providers/AuthProvider'
+import { saveUser } from '../../../api/Auth'
+
 
 
 const Login = () => {
@@ -38,6 +40,8 @@ const Login = () => {
             .then(result => {
                 console.log(result.user)
                 alert('Successfully Login')
+                // save user db
+                saveUser(result.user)
                 navigate(from, { replace: true })
             })
             .catch(err => {

@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import animationLogin from '../../../../assets/LoginSignUp/singup.gif'
-import { AuthContext } from '../../../../Providers/AuthProvider';
+import animationLogin from '../../../assets/LoginSignUp/singup.gif'
+import { AuthContext } from '../../../Providers/AuthProvider';
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { updateProfile } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc'
+import { saveUser } from '../../../api/Auth';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { loading, setLoading, createUser, updateUserProfile, signInWithGoogle} = useContext(AuthContext)
+    const { loading, setLoading, createUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext)
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const navigate = useNavigate();
@@ -42,6 +43,8 @@ const SignUp = () => {
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
+                                    // save user db
+                                    saveUser(result.user)
                                     navigate('/');
                                 }
                             })
@@ -58,6 +61,8 @@ const SignUp = () => {
             .then(result => {
                 console.log(result.user)
                 alert('Successfullya Login')
+                // save user db
+                saveUser(result.user)
                 navigate(from, { replace: true })
             })
             .catch(err => {
@@ -97,7 +102,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Enter email</span>
                             </label>
-                            <input type="email"  {...register("email", { required: true })}  placeholder="email" className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#fc541a] bg-gray-200 text-gray-900' />
+                            <input type="email"  {...register("email", { required: true })} placeholder="email" className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#fc541a] bg-gray-200 text-gray-900' />
                             {errors.email && <span className="text-red-600">Email is required</span>}
 
 
