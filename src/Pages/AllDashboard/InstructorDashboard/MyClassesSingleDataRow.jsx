@@ -7,7 +7,7 @@ import { deleteSingleClasses } from '../../../api/Classes';
 import DeleteModal from '../Modal/DeleteModal';
 import UpdateSingleClassessModal from '../Modal/UpdateSingleClassessModal';
 
-const MyClassesSingleDataRow = ({ singleClasses, fetchClasses }) => {
+const MyClassesSingleDataRow = ({ singleClasses, fetchClasses,refetch }) => {
     let [isOpen, setIsOpen] = useState(false)
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     function openModal() {
@@ -76,10 +76,10 @@ const MyClassesSingleDataRow = ({ singleClasses, fetchClasses }) => {
                     <UpdateSingleClassessModal
                         isOpen={isEditModalOpen}
                         setIsEditModalOpen={setIsEditModalOpen}
-                    // closeModal={() => setIsEditModalOpen(false)}
-                    // singleClasses={singleClasses}
-                    // id={singleClasses._id}
-                    // refetch={refetch}
+                        closeModal={() => setIsEditModalOpen(false)}
+                        singleClasses={singleClasses}
+                        id={singleClasses._id}
+                        refetch={refetch}
                     />
                 </button>
 

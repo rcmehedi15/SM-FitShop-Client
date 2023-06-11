@@ -31,7 +31,7 @@ const AddClass = () => {
             .then((response) => response.json())
             .then((data) => {
                 // Single Add Class Data 
-                const addClassData = {
+                const classData = {
                     className,
                     price: parseFloat(price),
                     instructor: {
@@ -42,7 +42,7 @@ const AddClass = () => {
                     availableSeats,
                     classImage: data.data.display_url,
                 }
-                addClasses(addClassData);
+                addClasses(classData);
                 toast.success("Classes Added Success")
                 navigate('/dashboard/my-classes');
 
@@ -133,7 +133,7 @@ const AddClass = () => {
                         </div>
                     </div>
 
-                    {/* form Photo URL row */}
+                   
 
                     <input required type="submit" value="Added" className="btn bg-[#004F83] text-white border-none" />
                 </form>

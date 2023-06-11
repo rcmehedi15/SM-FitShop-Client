@@ -37,3 +37,18 @@ export const deleteSingleClasses = async id => {
   const result = await response.json()
   return result
 }
+
+// update instructor classes data
+export const updateClasses = async (classesData, id) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/classes/${id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+     
+    },
+    body: JSON.stringify(classesData),
+  })
+
+  const data = await response.json()
+  return data
+}
