@@ -5,20 +5,20 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { addClasses } from '../../../api/Classes';
 import { toast } from 'react-hot-toast';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const AddClass = () => {
     <Helmet>Add A Class</Helmet>
-
+    const navigate = useNavigate()
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmit = (result) => {
-        
-        const { className, price,availableSeats } = result;
-       
+
+        const { className, price, availableSeats } = result;
+
         const formData = new FormData();
         formData.append('image', result.image[0]);
 
@@ -42,16 +42,11 @@ const AddClass = () => {
                     availableSeats,
                     classImage: data.data.display_url,
                 }
-                Swal.fire({
-                    icon: 'success',
-                    title: ' Class Added success',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                // post classes data send to server
-              addClasses(addClassData);
-              Navigate('/dashboard/my-classes')
-              reset();
+                addClasses(addClassData);
+                toast.success("Classes Added Success")
+                navigate('/dashboard/my-classes');
+
+
             })
 
             .catch((error) => {

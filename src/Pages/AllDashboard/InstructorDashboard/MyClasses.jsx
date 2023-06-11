@@ -3,7 +3,6 @@ import { AuthContext } from '../../../Providers/AuthProvider'
 import { getClasses } from '../../../api/Classes'
 import MyClassesSingleDataRow from './MyClassesSingleDataRow'
 const MyClasses = () => {
-
     const { user } = useContext(AuthContext)
     const [classes, setClasses] = useState([])
     const fetchClasses = () => getClasses(user?.email).then(data => setClasses(data))
@@ -73,7 +72,7 @@ const MyClasses = () => {
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody  >
                                     {classes &&
                                         classes.map(singleClasses => (
                                             <MyClassesSingleDataRow
