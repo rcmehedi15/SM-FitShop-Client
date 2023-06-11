@@ -52,7 +52,7 @@ const NavBar = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    <img src={Logo} alt="" className=" w-24 " />
+                    <Link to='/'><img src={Logo} alt="" className=" w-24 " /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

@@ -7,6 +7,13 @@ import SignUp from "../Pages/SignUpLogIn/SignUp/SignUp";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AddClass from "../Pages/AllDashboard/InstructorDashboard/AddClass";
 import MyClasses from "../Pages/AllDashboard/InstructorDashboard/MyClasses";
+import Profile from "../Pages/AllDashboard/Profile/Profile";
+import MySelectedClasses from "../Pages/AllDashboard/StudentDashboard/MySelectedClasses";
+import StudentDashboard from "../Pages/AllDashboard/StudentDashboard/StudentDashboard";
+import MyEnrolledClasses from "../Pages/AllDashboard/StudentDashboard/MyEnrolledClasses";
+import PaymentHistory from "../Pages/AllDashboard/StudentDashboard/PaymentHistory";
+import Instructors from "../Pages/Instructors/Instructors";
+import Classes from "../Pages/Classes/Classes";
 
 
 export const router = createBrowserRouter([
@@ -17,6 +24,14 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePages />
+      },
+      {
+        path: '/instructors',
+        element: <Instructors />
+      },
+      {
+        path: '/classes',
+        element: <Classes />
       },
     ]
   },
@@ -41,6 +56,24 @@ export const router = createBrowserRouter([
       {
         path: 'my-classes',
         element: <MyClasses />
+      },
+      // Profile 
+      {
+        path: 'profile',
+        element: <Profile />
+      },
+      // student routes
+      {
+        path: 'selected-classes',
+        element: <MySelectedClasses />
+      },
+      {
+        path: 'enrolled-classes',
+        element: <MyEnrolledClasses />
+      },
+      {
+        path: 'payment-history',
+        element: <PaymentHistory />
       }
       //------------------------ admin routes ----------------------
      
