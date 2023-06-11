@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
-// import { deleteRoom } from '../../api/rooms'
-// import DeleteModal from '../Modal/DeleteModal'
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiFillEdit } from 'react-icons/ai';
+import { deleteSingleClasses } from '../../../api/Classes';
+import DeleteModal from '../Modal/DeleteModal';
 
 const MyClassesSingleDataRow = ({ singleClasses, fetchClasses }) => {
     let [isOpen, setIsOpen] = useState(false)
@@ -17,13 +17,13 @@ const MyClassesSingleDataRow = ({ singleClasses, fetchClasses }) => {
     }
     const modalHandler = id => {
         console.log(id)
-        deleteRoom(id)
+        deleteSingleClasses(id)
             .then(data => {
                 console.log(data)
                 fetchClasses()
-                toast.success('Class deleted')
+                toast.success('Class Delete Success')
             })
-            .catch(err => console.log(err))
+            .catch(err => alert("No Delete", err))
         closeModal()
     }
     return (
@@ -60,15 +60,22 @@ const MyClassesSingleDataRow = ({ singleClasses, fetchClasses }) => {
                 <p className="text-gray-900 whitespace-no-wrap text-center">not Feedback</p>
             </td>
             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                
-                    <button className="mr-5" title="Delete">
-                        <RiDeleteBin6Line className="text-red-500 text-lg" />
-                    </button>
-                    <button >
-                        <AiFillEdit className="text-green-500 text-lg" title="Edit" />
-                    </button>
-                    
-                
+
+                <button onClick={openModal} className="mr-5" title="Delete">
+                    <span ><RiDeleteBin6Line className="text-red-500 text-lg" /></span>
+                    <DeleteModal
+                        isOpen={isOpen}
+                        closeModal={closeModal}
+                        modalHandler={modalHandler}
+                        id={singleClasses._id}
+                    />
+                </button>
+                <button >
+                    <span><AiFillEdit className="text-green-500 text-lg" title="Edit" /></span>
+                   
+                </button>
+
+
             </td>
 
         </tr>

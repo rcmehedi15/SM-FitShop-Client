@@ -79,8 +79,7 @@ const MyClasses = () => {
                                             <MyClassesSingleDataRow
                                                 key={singleClasses?._id}
                                                 singleClasses={singleClasses}
-                                                
-                                            fetchClasses={fetchClasses}
+                                                fetchClasses={fetchClasses}
                                             />
                                         ))}
                                 </tbody>

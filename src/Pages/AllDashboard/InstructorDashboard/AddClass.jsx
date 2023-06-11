@@ -5,6 +5,7 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { addClasses } from '../../../api/Classes';
 import { toast } from 'react-hot-toast';
+import { Navigate } from 'react-router-dom';
 
 
 
@@ -49,6 +50,7 @@ const AddClass = () => {
                 })
                 // post classes data send to server
               addClasses(addClassData);
+              Navigate('/dashboard/my-classes')
               reset();
             })
 

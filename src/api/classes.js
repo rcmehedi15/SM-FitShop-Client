@@ -26,3 +26,14 @@ export const getClasses = async email => {
   const data = await response.json()
   return data
 }
+// Instructor posted data deleted
+export const deleteSingleClasses = async id => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/classes/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+    },
+  })
+  const result = await response.json()
+  return result
+}
