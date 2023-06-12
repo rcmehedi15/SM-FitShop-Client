@@ -9,7 +9,7 @@ const AllUsers = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://sm-fit-shop-server.vercel.app/users');
+                const response = await fetch('http://localhost:5000/users');
                 const data = await response.json();
                 setUsers(data);
             } catch (error) {
@@ -20,7 +20,20 @@ const AllUsers = () => {
         fetchData();
     }, []);
 
-    // make a admin
+   
+     // make a admin 
+     const handleMakeAdmin = user => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`,{
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount){
+                console.log(data);
+               alert(`Admin Done ,Refresh Please`)
+            }
+        })
+    }
 
     return (
         <div className="w-full">
