@@ -10,6 +10,34 @@
 <li> Trainer Profiles</li>
 <li> Contact and Location Information:</li>
 </ul>
+<h3> Technology </h3>
+<ul> 
+<li>Tailwindcss </li>
+<li>React Js</li>
+<li>Express js</li>
+<li>Firebase</li>
+<li>Mongodb</li>
+<li>Vercel</li>
+
+</ul>
+
+
+<h3> Packages </h3>
+<ul> 
+<li>react-fast-marquee </li>
+<li>react-helmet</li>
+<li>react-hook-form </li>
+<li>react-hot-toast</li>
+<li>react-icons</li>
+<li>react-responsive-carousel</li>
+<li>react-spring</li>
+<li>react-typical</li>
+<li>sweetalert2</li>
+<li>swiper</li>
+
+
+</ul>
+
 
 </p>
   <h2>Main Website Live Link</h2>
