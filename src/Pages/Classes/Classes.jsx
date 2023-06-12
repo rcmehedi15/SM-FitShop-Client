@@ -28,10 +28,12 @@ function Classes() {
                 {data.map((item) => (
                     <div className="card w-96 bg-base-100 shadow-xl" key={item.id}>
                         <img src={item.classImage} alt="Classes" className="h-64" />
-                        <div className="card-body flex flex-col items-center">
-                            <h2 className="card-title">{item.name}</h2>
-                            <p>{item.className}</p>
-                            <p className=" mr-4 mt-4 px-4 bg-[#393950] text-white">${item.price}</p>
+
+                        <p className='text-center mt-4 font-bold  text-[#fc541a]'>{item.className}</p>
+                        <div className="card-body  flex flex-col ">
+                            <p className=''> <span className='font-bold'>Instructor Name:</span> {item.instructor.instructorName}</p>
+                            <p> <span className='font-bold'>Available Seats : </span>{item.availableSeats}</p>
+                            <p ><span className='font-bold'>Price: </span>${item.price}</p>
                             <div className="card-actions justify-end">
                                 <button
                                     onClick={() => handleAddToCartAdmin(item)}

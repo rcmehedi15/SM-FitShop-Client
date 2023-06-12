@@ -14,12 +14,14 @@ import MyEnrolledClasses from "../Pages/AllDashboard/StudentDashboard/MyEnrolled
 import PaymentHistory from "../Pages/AllDashboard/StudentDashboard/PaymentHistory";
 import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
+import Error from "../Pages/Error/Error";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+   
     children: [
       {
         path: '/',
@@ -42,6 +44,12 @@ export const router = createBrowserRouter([
   {
     path: '/signup',
     element: <SignUp />
+  },
+  {
+    
+      path: "*",
+      element: <Error></Error>
+    
   },
   {
     path: 'dashboard',
