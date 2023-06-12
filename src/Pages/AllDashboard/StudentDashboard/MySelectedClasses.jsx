@@ -10,7 +10,7 @@ function MySelectedClasses() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:5000/classes');
+            const response = await fetch('https://sm-fit-shop-server.vercel.app/classes');
             const data = await response.json();
             setClassesData(data);
         } catch (error) {

@@ -157,7 +157,7 @@ const Sidebar = () => {
           {!isAdmin && (
             <button
               onClick={handleAdminLogin}
-              className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-300 hover:text-gray-700 transition-colors duration-300 transform"
+              className="flex w-full items-center px-4 py-2 mt-5 bg-purple-500 text-center text-white hover:bg-gray-300 hover:text-gray-700 transition-colors duration-300 transform"
             >
               <span className="mx-4 font-medium">Admin Login</span>
             </button>
