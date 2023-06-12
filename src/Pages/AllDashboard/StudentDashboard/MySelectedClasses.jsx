@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 function MySelectedClasses() {
     const [classesData, setClassesData] = useState([]);
@@ -9,7 +10,7 @@ function MySelectedClasses() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('https://sm-fit-shop-server.vercel.app/classes');
+            const response = await fetch('http://localhost:5000/classes');
             const data = await response.json();
             setClassesData(data);
         } catch (error) {
@@ -19,7 +20,7 @@ function MySelectedClasses() {
     console.log(classesData);
 
     return (
-        <div>
+    <div>
             <Helmet><title> Selected classes</title></Helmet>
 
             {classesData.length > 0 && (

@@ -3,15 +3,15 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { MdOutlinePayment } from 'react-icons/md';
 import { BsFillBookmarkCheckFill,BsBookmarkHeartFill} from 'react-icons/bs'
-import { RiAdminFill } from 'react-icons/ri'
+// import { RiAdminFill } from 'react-icons/ri'
 import { toast } from 'react-hot-toast'
-import InstructorRequestModal from '../Modal/InstructorRequestModal.jsx'
+// import InstructorRequestModal from '../Modal/InstructorRequestModal.jsx'
 import { instructorRole } from '../../../api/Auth'
 import { AuthContext } from '../../../Providers/AuthProvider'
 import { useContext } from 'react'
 
 const StudentDashboard = () => {
-  const { role, user, setRole } = useContext(AuthContext)
+  // const { role, user, setRole } = useContext(AuthContext)
   const [modal, setModal] = useState(false)
   const modalHandler = email => {
     instructorRole(email).then(data => {
@@ -62,7 +62,7 @@ const StudentDashboard = () => {
         <span className='mx-4 font-medium'>Payment History</span>
       </NavLink>
 
-      {!role && (
+      {/* {!role && (
         <div
           onClick={() => setModal(true)}
           className='flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform text-white  hover:bg-gray-300   hover:text-white cursor-pointer'
@@ -77,7 +77,7 @@ const StudentDashboard = () => {
         modalHandler={modalHandler}
         isOpen={modal}
         closeModal={closeModal}
-      />
+      /> */}
     </>
   )
 }
