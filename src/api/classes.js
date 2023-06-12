@@ -49,6 +49,6 @@ export const updateClasses = async (classesData, id) => {
     body: JSON.stringify(classesData),
   })
 
-  const data = await response.json()
+  const data = response.json()
   return data
 }

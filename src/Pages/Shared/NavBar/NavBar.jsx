@@ -96,7 +96,7 @@ const NavBar = () => {
               <button
                 className={`disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full transition ${
                   theme === 'dark'
-                    ? 'bg-[#193038] text-white'
+                    ? 'bg-[#193038] text-white hover:text-[#193038]'
                     : 'bg-white text-[#193038]'
                 }`}
                 onClick={() => setModal(true)}
@@ -135,12 +135,12 @@ const NavBar = () => {
                       tabIndex={0}
                       className={`menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 ${
                         theme === 'dark'
-                          ? 'bg-base-100 text-white'
+                          ? 'bg-base-100 text-[#193038]'
                           : 'bg-white text-[#193038]'
                       }`}
                     >
                       <li>
-                        <Link to="/profile" className="justify-between">
+                        <Link to="dashboard/profile" className="justify-between">
                           Profile
                           <span className="badge">New</span>
                         </Link>
@@ -186,7 +186,7 @@ const NavBar = () => {
           isOpen={modal}
           closeModal={closeModal}
         />
-        <div className="absolute top-5 right-80">
+        <div className="absolute top-5 md:right-80 ">
           <button
             className={`p-2 rounded-full focus:outline-none ${
               theme === 'dark' ? 'bg-white' : 'bg-black'

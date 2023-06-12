@@ -21,7 +21,7 @@ const Slider = () => {
             className="bg-gray-900 mt-16 "
             style={{ backgroundImage: `url(${backgroundPhoto})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
         >
-            <div className="mx-9 ">
+            <div className="mx-9 mt-20">
                 <div className="flex items-center justify-center ">
                     <Swiper
                         autoplay={{

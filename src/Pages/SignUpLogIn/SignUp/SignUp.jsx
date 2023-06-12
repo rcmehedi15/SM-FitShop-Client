@@ -11,7 +11,7 @@ import { saveUser } from '../../../api/Auth';
 import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset,watch, formState: { errors } } = useForm();
     const { loading, setLoading, createUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext)
     const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -19,39 +19,23 @@ const SignUp = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     const onSubmit = data => {
-
         createUser(data.email, data.password)
             .then(result => {
+                
+                console.log(result);
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        const saveUser = { name: data.name, email: data.email }
-                        fetch('', {
-                            method: 'POST',
-                            headers: {
-                                'content-type': 'application/json'
-                            },
-                            body: JSON.stringify(saveUser)
-                        })
-                            .then(res => res.json())
+                        const saveUser = { name: data.name, email: data.email,photo: data.photoURL }    
+                            saveUser(saveUser)
                             .then(data => {
                                 if (data.insertedId) {
-                                    reset();
-                                    Swal.fire({
-
-                                        icon: 'success',
-                                        title: 'User created successfully.',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
+                                    toast.success('User Create Done')             
                                     // save user db
                                     saveUser(result.user)
                                     navigate('/');
                                 }
                             })
-
-
-
                     })
                     .catch(error => alert("Error", error))
             })
