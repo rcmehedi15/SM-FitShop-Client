@@ -20,7 +20,8 @@ function MyEnrolledClasses() {
 
     return (
         <div>
-            {/* Existing code for user profile dashboard */}
+                        <Helmet><title> Selected classes</title></Helmet>
+
 
             {/* Selected classes */}
             {classesData.length > 0 && (

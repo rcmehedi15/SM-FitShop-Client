@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SectionTitle from '../../Components/SectionTitle/SectionTitle';
+import { Helmet } from 'react-helmet';
 
 function Classes() {
     const [data, setData] = useState([]);
@@ -20,7 +21,7 @@ function Classes() {
 
     return (
         <div className='mt-24'>
-
+            <Helmet><title>Classes</title></Helmet>
             <SectionTitle heading={"All Classes"} subHeading={"Our Instructor All Posted Classes"} />
             <div className='container mx-auto grid md:grid-cols-3 gap-10 mt-20'>
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SectionTitle from '../../Components/SectionTitle/SectionTitle';
+import { Helmet } from 'react-helmet';
 function Instructors() {
     const [instructors, setInstructors] = useState([]);
   
@@ -19,7 +20,9 @@ function Instructors() {
   
     return (
       <div className="mx-9 mt-40">
+        
         <SectionTitle heading={"Instructors"} subHeading={"Get Inspired and Motivated by Our Top-rated Instructors"}></SectionTitle>
+        <Helmet> <title> Instructor</title></Helmet>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {instructors.map((instructor) => (
             <div key={instructor.id} className="rounded overflow-hidden shadow-lg mx-1">

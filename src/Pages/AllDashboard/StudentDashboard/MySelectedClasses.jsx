@@ -20,9 +20,8 @@ function MySelectedClasses() {
 
     return (
         <div>
-            {/* Existing code for user profile dashboard */}
+            <Helmet><title> Selected classes</title></Helmet>
 
-            {/* Selected classes */}
             {classesData.length > 0 && (
                 <div className="mt-8">
                     <div className='flex justify-between'>
@@ -43,7 +42,7 @@ function MySelectedClasses() {
                             </tr>
                         </thead>
                         <tbody>
-                            {classesData.map((classInfo,index) => (
+                            {classesData.map((classInfo, index) => (
                                 <tr className='text-center' key={classInfo._id}>
                                     <td className="px-4 py-2 border-b border-l-2 border-gray-200">
                                         {index + 1}

@@ -15,6 +15,7 @@ import PaymentHistory from "../Pages/AllDashboard/StudentDashboard/PaymentHistor
 import Classes from "../Pages/Classes/Classes";
 import Error from "../Pages/Error/Error";
 import Instructors from "../Pages/Instructors/Instructors";
+import AllUsers from "../Pages/AllDashboard/AdminDashboard/AllUsers";
 
 
 export const router = createBrowserRouter([
@@ -82,7 +83,12 @@ export const router = createBrowserRouter([
       {
         path: 'payment-history',
         element: <PaymentHistory />
+      },
+      {
+        path: 'all-users',
+        element: <AllUsers />
       }
+      
       //------------------------ admin routes ----------------------
      
     ]

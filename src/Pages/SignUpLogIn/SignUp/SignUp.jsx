@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc'
 import { saveUser } from '../../../api/Auth';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 const SignUp = () => {
     const { register, handleSubmit, reset,watch, formState: { errors } } = useForm();
@@ -21,7 +22,7 @@ const SignUp = () => {
     const onSubmit = data => {
         createUser(data.email, data.password)
             .then(result => {
-                
+
                 console.log(result);
 
                 updateUserProfile(data.name, data.photoURL)
@@ -59,6 +60,7 @@ const SignUp = () => {
 
     return (
         <div className="hero mt-12">
+            <Helmet><title>Singup</title></Helmet>
             <div className="hero-content flex-col lg:flex-row ">
                 <div className="text-center lg:text-left ">
                     <div className="text-center lg:text-left">

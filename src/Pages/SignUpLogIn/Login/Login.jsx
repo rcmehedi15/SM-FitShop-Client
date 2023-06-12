@@ -7,6 +7,7 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import { saveUser } from '../../../api/Auth';
 import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
   const { loading, setLoading, signIn, signInWithGoogle } = useContext(AuthContext);
@@ -52,6 +53,7 @@ const Login = () => {
 
   return (
     <div className="hero  bg-base-200">
+        <Helmet><title>Login</title></Helmet>
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left">
           <img src={animationLogin} className="hidden lg:block" alt="" />

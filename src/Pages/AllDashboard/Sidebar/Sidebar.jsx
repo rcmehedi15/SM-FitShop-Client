@@ -8,8 +8,13 @@ import { FaHome } from 'react-icons/fa'
 import { AuthContext } from '../../../Providers/AuthProvider'
 import InstructorDashboard from '../InstructorDashboard/InstructorDashboard'
 import StudentDashboard from '../StudentDashboard/StudentDashboard'
+import AdminDashboard from '../AdminDashboard/AdminDashboard'
 
 const Sidebar = () => {
+
+
+  // admin
+  const isAdmin = true;
   const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
   const { user, logOut, role } = useContext(AuthContext)
@@ -45,9 +50,8 @@ const Sidebar = () => {
       </div>
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#004f83] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
-          isActive && '-translate-x-full'
-        }  md:translate-x-0  transition duration-200 ease-in-out`}
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#004f83] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
+          }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
           {/* Branding & Profile Info */}
@@ -78,9 +82,13 @@ const Sidebar = () => {
           </div>
 
           {/* Nav Items */}
-          <div className='flex flex-col justify-between flex-1 mt-6'>
-            <nav>
-              {role && role === 'instructor' ? (
+
+          <div> {
+            isAdmin ? (
+              <nav> <AdminDashboard /></nav>
+            ) : role && role === 'instructor' ? (<div className='flex flex-col justify-between flex-1 mt-6'>
+              <nav>
+
                 <>
                   <label
                     htmlFor='Toggle3'
@@ -99,24 +107,24 @@ const Sidebar = () => {
                       Instructor
                     </span>
                   </label>
-                  {/* Menu Links */}
+
                   {toggle ? <InstructorDashboard /> : <StudentDashboard />}
                 </>
-              ) : (
-                <StudentDashboard />
-              )}
-            </nav>
-          </div>
+
+              </nav>
+            </div>) : (<StudentDashboard />)
+
+          }</div>
+
         </div>
 
         <div>
           <hr />
-          
+
           <NavLink
             to='/'
             className={({ isActive }) =>
-              `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
+              `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
               }`
             }
           >
@@ -127,8 +135,7 @@ const Sidebar = () => {
           <NavLink
             to='/dashboard/profile'
             className={({ isActive }) =>
-              `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
+              `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
               }`
             }
           >

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 function PaymentHistory() {
     const [classesData, setClassesData] = useState([]);
@@ -20,11 +21,11 @@ function PaymentHistory() {
 
     return (
         <div>
-            {/* Existing code for user profile dashboard */}
-
+            <Helmet><title>Payment History</title></Helmet>
             {/* Selected classes */}
             {classesData.length > 0 && (
                 <div className="mt-8">
+
                     <div className='flex justify-between'>
                         <span className="text-2xl font-bold mb-4">Payment History</span>
                         <span className="text-2xl font-bold"> Total: {classesData.length} </span>
