@@ -12,9 +12,9 @@ import MySelectedClasses from "../Pages/AllDashboard/StudentDashboard/MySelected
 import StudentDashboard from "../Pages/AllDashboard/StudentDashboard/StudentDashboard";
 import MyEnrolledClasses from "../Pages/AllDashboard/StudentDashboard/MyEnrolledClasses";
 import PaymentHistory from "../Pages/AllDashboard/StudentDashboard/PaymentHistory";
-import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import Error from "../Pages/Error/Error";
+import Instructors from "../Pages/Instructors/Instructors";
 
 
 export const router = createBrowserRouter([
