@@ -18,8 +18,9 @@ function PopularInstructors() {
     }, []);
   
     return (
-      <div className="mx-9 ">
-        <SectionTitle heading={"Popular Instructors"} subHeading={"Get Inspired and Motivated by Our Top-rated Instructors"}></SectionTitle>
+      <div className="mx-9 mt-40">
+        
+        <SectionTitle heading={"Instructors"} subHeading={"Get Inspired and Motivated by Our Top-rated Instructors"}></SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {instructors.map((instructor) => (
             <div key={instructor.id} className="rounded overflow-hidden shadow-lg mx-1">
