@@ -165,7 +165,7 @@ const NavBar = () => {
                 ) : (
                   <Link
                     to="/login"
-                    className={`btn btn-outline border-[#fc541a] btn-sm btn-out hover:border-[#fc541a] rounded-md hover:bg-[#fc541a] hover:text-white ${
+                    className={`btn btn-outline border-[#fc541a] btn-sm btn-out hover:border-[#fc541a] rounded-md hover:bg-[#fc541a] hover:text-dark ${
                       theme === 'dark'
                         ? 'border-white hover:bg-white hover:text-[#193038]'
                         : 'border-[#fc541a] hover:bg-[#fc541a] hover:text-white'

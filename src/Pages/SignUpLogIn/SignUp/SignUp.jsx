@@ -12,35 +12,90 @@ import { toast } from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
 
 const SignUp = () => {
-    const { register, handleSubmit, reset,watch, formState: { errors } } = useForm();
-    const { loading, setLoading, createUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext)
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+    const { loading, setLoading, createUser, updateUserProfile, signInWithGoogle,loggedUser } = useContext(AuthContext)
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-    const onSubmit = data => {
-        createUser(data.email, data.password)
-            .then(result => {
+   
+    const onSubmit = (data) => {
+       
+        //creating a new user
+        createUser(data?.email, data?.password)
+          .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+    
+            // add additional information of user   
+            updateUserProfile(data?.name, data?.photoURL)
+              .then(() => {
+                const saveUser = { 
+                  name: data.name, 
+                  email: data.email , 
+                  photoURL: data.photoURL, 
+                  role: 'student' };
+                  // console.log('saved user',saveUser);
+                 
+    
+                fetch('https://sm-fit-shop-server.vercel.app/users', {
+                  method: 'POST',
+                  headers: {
+                    'content-type': 'application/json'
+                },
+                  body: JSON.stringify(saveUser)
+                })
+                  .then(res => res.json())
+                  .then(data => {
+                    // console.log("after post",data)
+                    if (data?.insertedId) {
+                      reset();
+                      Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'User created successfully.',
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                      navigate(from, {replace: true})
+                    }
+                  })
+              })
+          }).catch(err => {
+            console.log(err.message);
+            Swal.fire(
+              'Something went wrong',
+              `${err.message}`,
+              'error'
+            )
+          })
+    
+      };
+   
+    // const onSubmit = data => {
+    //     createUser(data?.email, data?.password)
+    //         .then(result => {
 
-                console.log(result);
+    //             console.log(result);
 
-                updateUserProfile(data.name, data.photoURL)
-                    .then(() => {
-                        const saveUser = { name: data.name, email: data.email,photo: data.photoURL }    
-                            saveUser(saveUser)
-                            .then(data => {
-                                if (data.insertedId) {
-                                    toast.success('User Create Done')             
-                                    // save user db
-                                    saveUser(result.user)
-                                    navigate('/');
-                                }
-                            })
-                    })
-                    .catch(error => alert("Error", error))
-            })
-    };
+    //             updateUserProfile(data.name, data.photoURL)
+    //                 .then(() => {
+    //                     const saveUser = { name: data.name, email: data.email, photo: data.photoURL }
+    //                     console.log(saveUser);
+    //                     saveUser(saveUser)
+    //                         .then(data => {
+    //                             if (data.insertedId) {
+    //                                 toast.success('User Create Done')
+    //                                 // save user db
+    //                                 saveUser(result.user)
+    //                                 navigate('/');
+    //                             }
+    //                         })
+    //                 })
+    //                 .catch(error => alert("Error", error))
+    //         })
+    // };
     // Handle google signin
     const handleGoogleSignIn = () => {
         signInWithGoogle()

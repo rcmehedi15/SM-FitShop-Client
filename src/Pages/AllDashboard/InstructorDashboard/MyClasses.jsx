@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../../Providers/AuthProvider'
 import { getClasses } from '../../../api/Classes'
 import MyClassesSingleDataRow from './MyClassesSingleDataRow'
+import { Helmet } from 'react-helmet'
 const MyClasses = () => {
     const { user } = useContext(AuthContext)
     const [classes, setClasses] = useState([])
@@ -16,6 +17,7 @@ const MyClasses = () => {
         <>
 
             <div className='container mx-auto px-4 sm:px-8'>
+                <Helmet><title>My Classes</title></Helmet>
                 <div className='py-8'>
                     <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
                         <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>

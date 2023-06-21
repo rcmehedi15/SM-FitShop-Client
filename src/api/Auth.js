@@ -19,7 +19,7 @@ export const saveUser = user => {
 // instructor role
 export const instructorRole = email => {
   const currentUser = {
-    role: 'instructor'
+    role: 'instructor',
   }
 
   return fetch(`${import.meta.env.VITE_API_URL}/users/${email}`, {
@@ -31,17 +31,9 @@ export const instructorRole = email => {
   }).then(res => res.json())
 }
 
-// get role
+// Get role
 export const getRole = async email => {
-  try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${email}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch user data');
-    }
-    const user = await response.json();
-    return user?.role;
-  } catch (error) {
-    console.error('Error:', error);
-    
-  }
-};
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${email}`)
+  const user = await response.json()
+  return user?.role
+}

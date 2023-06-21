@@ -21,7 +21,7 @@ function MyEnrolledClasses() {
 
     return (
         <div>
-                        <Helmet><title> Selected classes</title></Helmet>
+                        <Helmet><title> Enrolled classes</title></Helmet>
 
 
             {/* Selected classes */}

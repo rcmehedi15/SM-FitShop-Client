@@ -79,7 +79,8 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     setRole,
-    role
+    role,
+    
   }
 
   return (
